@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Washing Cloth App</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="amit.css">
+</head> 
+<body>
+    <!-- Main App Container -->
+    <div id="mainApp" class="main-container bg-white p-6 md:p-8 lg:p-10 rounded-xl shadow-lg border border-gray-200 w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto transition-all duration-300 ease-in-out">
+        <!-- App Title -->
+        <h1 class="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-6 tracking-tight">
+            Washing Cloth App
+        </h1>
+
+        <!-- Season Selection Buttons -->
+        <div class="flex flex-col sm:flex-row justify-center sm:space-x-4 space-y-4 sm:space-y-0 mb-8">
+            <button id="summerBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-full sm:w-auto">
+                Summer
+            </button>
+            <button id="winterBtn" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 w-full sm:w-auto">
+                Winter
+            </button>
+        </div>
+
+        <!-- Add Cloth Button (initially visible) -->
+        <div class="text-center">
+            <button id="addClothBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 px-8 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 w-full">
+                Add cloth
+            </button>
+        </div>
+    </div>
+
+    
+    <div id="summerDetails" class="details-container bg-white p-6 md:p-8 lg:p-10 rounded-xl shadow-lg border border-gray-200 w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto hidden transition-all duration-300 ease-in-out scale-95 opacity-0">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">Summer Cloth Details</h2>
+
+        <!-- Kids Section -->
+        <div class="mb-5">
+            <label for="kidsClothSummer" class="block text-gray-700 text-lg font-medium mb-2">Kids (1 cloth = ₹0.5)</label>
+            <input type="number" id="kidsClothSummer" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" placeholder="Number of cloth" min="0">
+        </div>
+
+        <!-- Women Section -->
+        <div class="mb-5">
+            <label for="womenClothSummer" class="block text-gray-700 text-lg font-medium mb-2">Women (1 cloth = ₹1.5)</label>
+            <input type="number" id="womenClothSummer" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" placeholder="Number of cloth" min="0">
+        </div>
+
+        <!-- Men Section -->
+        <div class="mb-6">
+            <label for="menClothSummer" class="block text-gray-700 text-lg font-medium mb-2">Men (1 cloth = ₹2.2)</label>
+            <input type="number" id="menClothSummer" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" placeholder="Number of cloth" min="0">
+        </div>
+
+        <!-- Display Total Cloth and Price -->
+        <div class="bg-gray-100 p-4 rounded-lg mb-6 shadow-inner">
+            <p class="text-gray-700 text-lg mb-2"><strong class="font-semibold">Total cloth:</strong> <span id="totalClothSummer" class="font-bold">0</span></p>
+            <p class="text-gray-700 text-lg"><strong class="font-semibold">Total cloth price:</strong> <span id="totalPriceSummer" class="font-bold">₹0.00</span></p>
+        </div>
+
+        <!-- Confirm Button -->
+        <button id="confirmDetailsBtnSummer" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-full">
+            Confirm
+        </button>
+        <!-- Back Button -->
+        <button id="backToMainBtnSummer" class="mt-4 bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 w-full">
+            Back
+        </button>
+    </div>
+
+
+    <div id="winterDetails" class="details-container bg-white p-6 md:p-8 lg:p-10 rounded-xl shadow-lg border border-gray-200 w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto hidden transition-all duration-300 ease-in-out scale-95 opacity-0">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">Winter Cloth Details</h2>
+
+        <!-- Kids Section -->
+        <div class="mb-5">
+            <label for="kidsClothWinter" class="block text-gray-700 text-lg font-medium mb-2">Kids (1 cloth = ₹1)</label>
+            <input type="number" id="kidsClothWinter" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" placeholder="Number of cloth" min="0">
+        </div>
+
+        <!-- Women Section -->
+        <div class="mb-5">
+            <label for="womenClothWinter" class="block text-gray-700 text-lg font-medium mb-2">Women (1 cloth = ₹2.5)</label>
+            <input type="number" id="womenClothWinter" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" placeholder="Number of cloth" min="0">
+        </div>
+
+        <!-- Men Section -->
+        <div class="mb-6">
+            <label for="menClothWinter" class="block text-gray-700 text-lg font-medium mb-2">Men (1 cloth = ₹3.5)</label>
+            <input type="number" id="menClothWinter" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" placeholder="Number of cloth" min="0">
+        </div>
+
+        <!-- Display Total Cloth and Price -->
+        <div class="bg-gray-100 p-4 rounded-lg mb-6 shadow-inner">
+            <p class="text-gray-700 text-lg mb-2"><strong class="font-semibold">Total cloth:</strong> <span id="totalClothWinter" class="font-bold">0</span></p>
+            <p class="text-gray-700 text-lg"><strong class="font-semibold">Total cloth price:</strong> <span id="totalPriceWinter" class="font-bold">₹0.00</span></p>
+        </div>
+
+        <!-- Confirm Button -->
+        <button id="confirmDetailsBtnWinter" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-full">
+            Confirm
+        </button>
+        <!-- Back Button -->
+        <button id="backToMainBtnWinter" class="mt-4 bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 w-full">
+            Back
+        </button>
+    </div>
+
+
+    <div id="finalOrderDetails" class="details-container bg-white p-6 md:p-8 lg:p-10 rounded-xl shadow-lg border border-gray-200 w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto hidden transition-all duration-300 ease-in-out scale-95 opacity-0">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">Confirm Your Order</h2>
+
+        <!-- Order Summary -->
+        <div class="bg-gray-100 p-4 rounded-lg mb-6 shadow-inner">
+            <p class="text-gray-700 text-lg mb-2"><strong class="font-semibold">Selected Season:</strong> <span id="finalSeason" class="font-bold capitalize"></span></p>
+            <p class="text-gray-700 text-lg mb-2"><strong class="font-semibold">Total Clothes:</strong> <span id="finalTotalCloth" class="font-bold">0</span></p>
+            <p class="text-gray-700 text-lg"><strong class="font-semibold">Total Price:</strong> <span id="finalTotalPrice" class="font-bold">₹0.00</span></p>
+        </div>
+
+        <!-- Location Input -->
+        <div class="mb-6">
+            <label for="locationInput" class="block text-gray-700 text-lg font-medium mb-2">Your Location</label>
+            <input type="text" id="locationInput" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" placeholder="Enter your address or landmark">
+            <small class="text-gray-500 text-sm mt-1 block">
+                (Google Map integration is a placeholder for this demo)
+            </small>
+        </div>
+
+        <!-- Payment Gateway Placeholder -->
+        <div class="mb-6">
+            <button id="proceedToPaymentBtn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50 w-full">
+                Proceed to Payment
+            </button>
+            <small class="text-gray-500 text-sm mt-1 block">
+                (Payment Gateway integration is a placeholder for this demo)
+            </small>
+        </div>
+
+        <!-- Final Submit Button -->
+        <button id="submitOrderBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 px-8 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 w-full">
+            Submit Order
+        </button>
+        <!-- Back to Main Button -->
+        <button id="backFromFinalBtn" class="mt-4 bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 w-full">
+            Back to Main
+        </button>
+    </div>
+
+    <!-- Custom Message Box -->
+    <div id="messageBoxOverlay" class="message-box-overlay hidden">
+        <div class="message-box">
+            <h2 id="messageBoxTitle"></h2>
+            <p id="messageBoxText"></p>
+            <button id="messageBoxCloseBtn">OK</button>
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="amit.js"></script>
+</body>
+</html>
